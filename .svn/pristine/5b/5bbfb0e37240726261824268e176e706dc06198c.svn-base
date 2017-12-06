@@ -1,0 +1,118 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:2:1-42:12
+	package
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:3:5-42
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+application
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:5:5-27:19
+MERGED from [com.android.support:design:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:9:9-35
+	android:allowBackup
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:10:9-40
+activity#com.example.nick.myfirstapp.MainActivity
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:11:9-20:20
+	android:label
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:13:13-45
+	android:theme
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:14:13-56
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:12:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:15:13-19:29
+action#android.intent.action.MAIN
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:18:27-74
+activity#com.example.nick.myfirstapp.SettingsActivity
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:21:9-23:63
+	android:label
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:23:13-60
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:22:13-45
+activity#com.example.nick.myfirstapp.HabitEditActivity
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:24:9-55
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:24:19-52
+activity#com.example.nick.myfirstapp.HabitCheckActivity
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:25:9-56
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:25:19-53
+activity#com.example.nick.myfirstapp.ImproveEditActivity
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:26:9-66
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:26:19-54
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:30:5-83
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:30:22-81
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:32:5-80
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:32:22-78
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:33:5-81
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:33:22-78
+provider#com.example.nick.myfirstapp.provider.AttachmentProvider
+ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:35:5-40:80
+	android:readPermission
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:40:9-78
+	android:authorities
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:37:9-67
+	android:grantUriPermissions
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:39:9-43
+	android:multiprocess
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:38:9-36
+	android:name
+		ADDED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml:36:9-52
+uses-sdk
+INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-compat:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-fragment:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:appcompat-v7:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-vector-drawable:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\AndroidManifest.xml:20:5-43
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:24.2.1] D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\nick\AndroidStudioProjects\MyFirstApp\app\src\main\AndroidManifest.xml

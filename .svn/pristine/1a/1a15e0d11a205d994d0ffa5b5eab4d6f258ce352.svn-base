@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Users\\nick\\AndroidStudioProjects\\MyFirstApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-television-v13\\item_improvement.xml",
+        "source": "D:\\Users\\nick\\AndroidStudioProjects\\MyFirstApp\\app\\src\\main\\res\\layout-television\\item_improvement.xml"
+    },
+    {
+        "merged": "D:\\Users\\nick\\AndroidStudioProjects\\MyFirstApp\\app\\build\\intermediates\\res\\merged\\debug\\layout-television-v13\\content_practice_confirm.xml",
+        "source": "D:\\Users\\nick\\AndroidStudioProjects\\MyFirstApp\\app\\src\\main\\res\\layout-television\\content_practice_confirm.xml"
+    }
+]
