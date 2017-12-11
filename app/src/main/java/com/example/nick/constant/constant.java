@@ -52,7 +52,7 @@ public class constant {
     public static final int[] EImageRes = {
             R.drawable.c2e,
             R.drawable.e2c,
-            R.drawable.pinyin,
+            R.drawable.senmk,
             R.drawable.rand};
 
     //定义图标下方的名称数组
