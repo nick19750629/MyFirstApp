@@ -3,6 +3,7 @@ package com.example.nick.domain;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,9 +26,13 @@ public class Practice {
         lstPractice = new ArrayList<HashMap<String,String>>();
 
         int max = (dic.size() > SF_MAX ? SF_MAX : dic.size());
+        Collections.shuffle(dic);
         for (int i = 0; i < max; i++){
+            /*
             int idx = (int)(Math.random() * dic.size());
             HashMap<String, String> word = dic.get(idx);
+            */
+            HashMap<String, String> word = dic.get(i);
             lstPractice.add(word);
         }
         idx = 0;

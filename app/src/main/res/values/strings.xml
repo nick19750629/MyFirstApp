@@ -7,9 +7,9 @@
     <string name="action_settings">设置</string>
     <string name="author">nech7506</string>
     <string name="email">nick7506@hotmail.com</string>
-    <string name="version">0.7.9</string>
+    <string name="version">0.8.0</string>
     <string name="title_activity_settings">设置</string>
-    <string name="welcome">欢迎使用阿瞳学习Android版（V0.7.9）</string>
+    <string name="welcome">欢迎使用阿瞳学习Android版（V0.8.0）</string>
     <string name="todo">功能保留，敬请期待！</string>
 
     <!-- Strings related to Settings -->
