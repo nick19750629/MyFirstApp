@@ -95,6 +95,25 @@ public class practiceDetailOperation {
         return fileName;
     }
 
+
+    public static List<HashMap<String,Object>> queryDataToRpt(SQLiteDatabase db) {
+        String sqlStatement = "select _id,pid,question,answer,correct from "
+                + table_name + " where correct = 1" ;
+        Cursor cursor = db.rawQuery(sqlStatement,null);
+        List<HashMap<String,Object>> lstRet = new ArrayList<HashMap<String,Object>>();
+        while (cursor.moveToNext()){
+            HashMap<String,Object> practice = new HashMap<String,Object>();
+            practice.put("i",cursor.getInt(0));
+            practice.put("p",cursor.getInt(1));
+            practice.put("q",cursor.getString(2));
+            practice.put("a",cursor.getString(3));
+            practice.put("c",cursor.getInt(4));
+            lstRet.add(practice);
+        }
+        Log.i(TAG,"select *:"+lstRet.size());
+        return lstRet;
+    }
+
     public static ContentValues query(SQLiteDatabase db,int id) {
         ContentValues values = new ContentValues();
         String sqlStatement;

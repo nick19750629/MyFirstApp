@@ -46,20 +46,25 @@ public class constant {
             R.drawable.pinyin,
             R.drawable.hanzi,
             R.drawable.wysw,
-            R.drawable.rand};
+            R.drawable.st,
+            R.drawable.rand
+    };
 
     //定义图标数组
     public static final int[] EImageRes = {
             R.drawable.c2e,
             R.drawable.e2c,
             R.drawable.senmk,
-            R.drawable.rand};
+            R.drawable.st,
+            R.drawable.rand
+    };
 
     //定义图标下方的名称数组
     public static final String[] copt_name = {
             "看汉字写拼音",
             "看拼音写汉字",
             "望义生文",
+            "随堂练习",
             "随机测试"
     };
 
@@ -67,6 +72,7 @@ public class constant {
             "汉译英",
             "英译汉",
             "造句",
+            "随堂练习",
             "随机测试"
     };
 

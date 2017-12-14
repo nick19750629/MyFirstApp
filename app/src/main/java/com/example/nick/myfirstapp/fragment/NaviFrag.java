@@ -1,7 +1,9 @@
 package com.example.nick.myfirstapp.fragment;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -15,7 +17,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.nick.constant.constant;
-import com.example.nick.myfirstapp.MainActivity;
+import com.example.nick.myfirstapp.dialog.selector;
 import com.example.nick.myfirstapp.R;
 
 import java.util.ArrayList;
@@ -82,7 +84,12 @@ public class NaviFrag extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(rootView.getContext(),name[position], Toast.LENGTH_LONG).show();
                 param = position;
-                initFrag(view);
+                Log.i(TAG,"Position" + position);
+                if (position == 3) {
+                    showDialg(view);
+                }else {
+                    initFrag(view);
+                }
             }
         });
         return rootView;
@@ -95,7 +102,6 @@ public class NaviFrag extends Fragment {
         fab.setVisibility(rootView.INVISIBLE);
     }
 
-
     private void initFrag(View view) {
         Fragment fragment;
         FragmentManager fragmentManager = getActivity().getFragmentManager();
@@ -106,6 +112,28 @@ public class NaviFrag extends Fragment {
         Log.i(TAG,"param out param=" + param);
         fragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.main_container, fragment).commit();
+    }
+    
+    private void showDialg(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        //builder.setMessage("这个就是自定义的提示框");
+        builder.setTitle("复选框");
+        builder.setMultiChoiceItems(new String[]{"item1","item2"},null,null);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {  
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();  
+                //设置你的操作事项  
+            }  
+        });  
+  
+        builder.setNegativeButton("取消",  
+                                new android.content.DialogInterface.OnClickListener() {  
+                    public void onClick(DialogInterface dialog, int which) {  
+                        dialog.dismiss();  
+                    }  
+                });  
+  
+        builder.create().show();  
     }
 
 }

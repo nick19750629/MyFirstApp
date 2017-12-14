@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by nick on 2017/10/09.
@@ -65,8 +66,8 @@ public class ImportFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"发送邮件开始！");
-                //sendMail();
-                sendMail2();
+                //sendMail();sendMail2();
+                sendMail3();
                 Log.i(TAG,"发送邮件完成！");
             }
         });
@@ -367,14 +368,13 @@ public class ImportFrag extends Fragment {
         }
     }
 
-
     private void sendMail2() {
         try{
             DatabaseHelper dbHelper = new DatabaseHelper(rootView.getContext(), constant.DB_NAME);
             // 只有调用了DatabaseHelper的getWritableDatabase()方法或者getReadableDatabase()方法之后，才会创建或打开一个连接
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-            String[] receiver = new String[] {"nick@dhc.com.cn"};
+            String[] receiver = new String[] {"nech7506@hotmail.com"};  //TO变更
             String subject = "易错内容整理";
             String content = "根据导出数据进行易错内容整理";
 
@@ -395,6 +395,43 @@ public class ImportFrag extends Fragment {
 
             Log.i(TAG,file.toString());
             email.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+
+            // 调用系统的邮件系统
+            startActivity(Intent.createChooser(email, "请选择邮件发送软件"));
+
+            db.close();
+        }catch(Exception e){
+            Log.e(TAG,"Exception" + e.getMessage());
+            //Toast.makeText(rootView.getContext(),"Exception" + e.getMessage() ,Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
+
+    private void sendMail3() {
+        try{
+            DatabaseHelper dbHelper = new DatabaseHelper(rootView.getContext(), constant.DB_NAME);
+            // 只有调用了DatabaseHelper的getWritableDatabase()方法或者getReadableDatabase()方法之后，才会创建或打开一个连接
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+            String[] receiver = new String[] {"nech7506@hotmail.com"};  //TO变更
+            String subject = "易错内容整理";
+            StringBuffer content = new StringBuffer();
+            content.append("根据导出数据进行易错内容整理\n");
+            content.append("question\tanswer\n");
+
+            List<HashMap<String,Object>> result = practiceDetailOperation.queryDataToRpt(db);
+            for (int i = 0;i < result.size();i++) {
+                content.append(result.get(i).get("q")).append("\t").append(result.get(i).get("a")).append("\n");
+            }
+
+            Intent email = new Intent(Intent.ACTION_SEND);
+            email.setType("text/csv");
+            // 设置邮件发收人
+            email.putExtra(Intent.EXTRA_EMAIL, receiver);
+            // 设置邮件标题
+            email.putExtra(Intent.EXTRA_SUBJECT, subject);
+            // 设置邮件内容
+            email.putExtra(Intent.EXTRA_TEXT, content.toString());
 
             // 调用系统的邮件系统
             startActivity(Intent.createChooser(email, "请选择邮件发送软件"));
