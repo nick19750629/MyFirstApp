@@ -83,6 +83,23 @@ public class subjectOperation {
         Log.i(TAG,"select *:"+lstRet.size());
         return lstRet;
     }
+
+    public static List<HashMap<String,String>> queryBySubject(SQLiteDatabase db,String pSubject) {
+        String sqlStatement;
+        sqlStatement = "select _id,subject,display_sort,module from " + table_name + " where subject = '"
+                + pSubject + "' order by display_sort";
+        Cursor cursor = db.rawQuery(sqlStatement,null);
+        List<HashMap<String,String>> lstRet = new ArrayList<HashMap<String,String>>();
+        while (cursor.moveToNext()){
+            HashMap<String,String> word = new HashMap<String,String>();
+            word.put("s",cursor.getString(1));
+            word.put("d",cursor.getString(2));
+            word.put("m",cursor.getString(3));
+            lstRet.add(word);
+        }
+        Log.i(TAG,"select *:"+lstRet.size());
+        return lstRet;    }
+
     public static int deleteAll(SQLiteDatabase db) {
         int intRet = 0;
 

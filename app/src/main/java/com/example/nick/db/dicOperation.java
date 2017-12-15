@@ -85,6 +85,23 @@ public class dicOperation {
         return lstRet;
     }
 
+    public static List<HashMap<String,String>> queryByModule(SQLiteDatabase db,String pModule) {
+        String sqlStatement = "select _id,english,phonetic,chinese,origin from " + table_name + " where origin = '"
+                + pModule + "' ";
+        Cursor cursor = db.rawQuery(sqlStatement,null);
+        List<HashMap<String,String>> lstRet = new ArrayList<HashMap<String,String>>();
+        while (cursor.moveToNext()){
+            HashMap<String,String> word = new HashMap<String,String>();
+            word.put("e",cursor.getString(1));
+            word.put("p",cursor.getString(2));
+            word.put("c",cursor.getString(3));
+            word.put("o",cursor.getString(4));
+            lstRet.add(word);
+        }
+        Log.i(TAG,"select *:"+lstRet.size());
+        return lstRet;
+    }
+
     public static String queryDataToFile(SQLiteDatabase db,String path) {
         String fileName = table_name + ".csv";
         Cursor cursor = db.query(table_name,new String[]{"_id","english","phonetic",

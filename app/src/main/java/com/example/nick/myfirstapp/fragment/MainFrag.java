@@ -79,7 +79,7 @@ public class MainFrag extends Fragment{
     private void initValue() {
         dic = new ArrayList<HashMap<String,String>>();
         readData();
-        practice = new Practice(dic);
+        practice = new Practice(dic,30);
         word = practice.getFirstWord();
     }
 

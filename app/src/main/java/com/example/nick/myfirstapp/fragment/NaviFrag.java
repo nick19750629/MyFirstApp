@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,14 +15,17 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.content.DialogInterface;
 import android.widget.Toast;
 
 import com.example.nick.constant.constant;
-import com.example.nick.myfirstapp.dialog.selector;
+import com.example.nick.db.DatabaseHelper;
+import com.example.nick.db.subjectOperation;
 import com.example.nick.myfirstapp.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by nick on 2017/10/09.
@@ -34,6 +38,8 @@ public class NaviFrag extends Fragment {
 
     private int param;
     private String course;
+
+    private StringBuffer retStr;
 
     @Nullable
     @Override
@@ -85,8 +91,11 @@ public class NaviFrag extends Fragment {
                 //Toast.makeText(rootView.getContext(),name[position], Toast.LENGTH_LONG).show();
                 param = position;
                 Log.i(TAG,"Position" + position);
+                retStr = new StringBuffer();
                 if (position == 3) {
-                    showDialg(view);
+                    String[] items = getItems(course);
+                    final boolean[] checkedItems = getCheckedItems(items.length);
+                    showDialg(view,items,checkedItems);
                 }else {
                     initFrag(view);
                 }
@@ -109,31 +118,75 @@ public class NaviFrag extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt("param", param);
         bundle.putString("course",course);
+        bundle.putString("select",retStr.toString());
         Log.i(TAG,"param out param=" + param);
         fragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(R.id.main_container, fragment).commit();
     }
     
-    private void showDialg(View v) {
+    private void showDialg(View v,String[] items,final boolean[] checkedItems) {
+        //final String[] items = {"item1","item2"};
+        //final boolean[] checkedItems = {false,false};
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
         //builder.setMessage("这个就是自定义的提示框");
         builder.setTitle("复选框");
-        builder.setMultiChoiceItems(new String[]{"item1","item2"},null,null);
+        builder.setMultiChoiceItems(items,checkedItems,new DialogInterface.OnMultiChoiceClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialog,int which,boolean isChecked){
+
+            }
+        });
+        builder.create();
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {  
             public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();  
-                //设置你的操作事项  
-            }  
+                //Log.i(TAG,"确定 clicked");
+                //设置你的操作事项
+                for (int i = 0;i < checkedItems.length; i++) {
+                    //Log.i(TAG,"checkedItems" + checkedItems[i]);
+                    if (checkedItems[i]) {
+                        if ("".equals(retStr.toString())) {
+                            retStr.append(i);
+                        } else {
+                            retStr.append(",").append(i);
+                        }
+                        Log.i(TAG,i + "checked retStr=" + retStr);
+                    }
+                }
+                initFrag(rootView);
+                //dialog.dismiss();
+            }
         });  
   
         builder.setNegativeButton("取消",  
                                 new android.content.DialogInterface.OnClickListener() {  
                     public void onClick(DialogInterface dialog, int which) {  
-                        dialog.dismiss();  
+                        //dialog.dismiss();
                     }  
                 });  
   
-        builder.create().show();  
+        builder.show();
     }
 
+    private String[] getItems(String pSubject) {
+        String[] items = {"item0","item1","item2","item3","item4","item5","item6","item7","item8"};
+        try {
+            DatabaseHelper dbHelper = new DatabaseHelper(rootView.getContext(), constant.DB_NAME);
+            // 只有调用了DatabaseHelper的getWritableDatabase()方法或者getReadableDatabase()方法之后，才会创建或打开一个连接
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            List<HashMap<String,String>> modules = subjectOperation.queryBySubject(db,pSubject);
+            items = new String[modules.size()];
+            for (int i = 0;i < modules.size();i++) {
+                items[i] = modules.get(i).get("m");
+            }
+        }catch (Exception e) {
+            Log.i(TAG,"Exception:"+ e.getMessage());
+        }
+        return items;
+    }
+
+    final private boolean[] getCheckedItems(int cnt) {
+        boolean[] checkedItems = new boolean[cnt];
+        return checkedItems;
+    }
 }

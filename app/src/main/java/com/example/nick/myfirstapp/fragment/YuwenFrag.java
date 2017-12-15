@@ -22,6 +22,7 @@ import com.example.nick.db.dbUtil;
 import com.example.nick.db.dicOperation;
 import com.example.nick.db.practiceDetailOperation;
 import com.example.nick.db.practiceOperation;
+import com.example.nick.db.subjectOperation;
 import com.example.nick.domain.Practice;
 import com.example.nick.myfirstapp.R;
 import com.example.nick.util.baseUtil;
@@ -59,6 +60,7 @@ public class YuwenFrag extends Fragment{
     private int pid;
     private int param;
     private String course;
+    private String selected;
 
     @Nullable
     @Override
@@ -68,6 +70,8 @@ public class YuwenFrag extends Fragment{
         Bundle bundle = getArguments();
         param = bundle.getInt("param");
         course = bundle.getString("course");
+        selected = bundle.getString("select");
+        Log.i(TAG,"selected=" + selected);
         initView();
         initValue();
         createPractice();
@@ -91,9 +95,15 @@ public class YuwenFrag extends Fragment{
     }
 
     private void initValue() {
+        int max_cnt;
         dic = new ArrayList<HashMap<String,String>>();
         readData();
-        practice = new Practice(dic);
+        if (course.equals(constant.SUB_CHINESE)) {
+            max_cnt = 30;
+        }else {
+            max_cnt = 50;
+        }
+        practice = new Practice(dic,max_cnt);
         word = practice.getFirstWord();
     }
 
@@ -177,17 +187,27 @@ public class YuwenFrag extends Fragment{
             cwordOperation.createTable(db);
 
             //boolean imported = false;
-            if (course.equals(constant.SUB_CHINESE)) {
-                if (cwordOperation.getCountByMode(db,0) > 0) {
-                    getDataFromDb(db);
-                }else {
-                    getDataFromFile(db);
+            if ("".equals(selected)){
+                if (course.equals(constant.SUB_CHINESE)) {
+                    if (cwordOperation.getCountByMode(db,0) > 0) {
+                        getDataFromDb(db);
+                    }else {
+                        getDataFromFile(db);
+                    }
+                } else {
+                    if (dicOperation.getCountByMode(db,0) > 0) {
+                        getDataFromDb(db);
+                    }else {
+                        getDataFromFile(db);
+                    }
                 }
-            } else {
-                if (dicOperation.getCountByMode(db,0) > 0) {
-                    getDataFromDb(db);
-                }else {
-                    getDataFromFile(db);
+            }else {
+                String[] idx = selected.split(",");
+                Log.i(TAG,"idx.length=" + idx.length);
+                dic = new ArrayList<HashMap<String,String>>();
+                for (int i = 0;i < idx.length;i++) {
+                    Log.i(TAG,"before getSelectData i=" + i);
+                    dic.addAll(getSelectData(db,getModule(db,idx[i])));
                 }
             }
             db.close();
@@ -318,6 +338,21 @@ public class YuwenFrag extends Fragment{
         }
     }
 
+    private List<HashMap<String,String>> getSelectData(SQLiteDatabase db,String pModule) {
+        List<HashMap<String,String>> ret = new ArrayList<HashMap<String,String>>();
+        try{
+            if (course.equals(constant.SUB_CHINESE)) {
+                ret = cwordOperation.queryByModule(db,pModule);
+            } else {
+                ret = dicOperation.queryByModule(db,pModule);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+            return ret;
+        }
+    }
+
     private void setTextValue(TextView text,TextView tip,HashMap<String,String> word) {
         String question,answer;
 
@@ -326,7 +361,7 @@ public class YuwenFrag extends Fragment{
             return;
         }
 
-        if (param == 3) {
+        if (param == 3 || param == 4) {
             subject = baseUtil.dice();
         } else {
             subject = param;
@@ -441,5 +476,13 @@ public class YuwenFrag extends Fragment{
         return ret;
     }
 
-
+    private String getModule(SQLiteDatabase db,String idx) {
+        List<HashMap<String,String>> modules = subjectOperation.queryBySubject(db,course);
+        Log.i(TAG,"course=" + course + " and size=" + modules.size());
+        if (modules.size() > Integer.parseInt(idx)) {
+            return modules.get(Integer.parseInt(idx)).get("d");
+        }else {
+            return "";
+        }
+    }
 }

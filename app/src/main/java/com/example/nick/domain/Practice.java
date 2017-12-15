@@ -20,12 +20,13 @@ public class Practice {
     //control
     private int idx;
     //private static final int SF_MAX = 5;   //4DEBUG 每次练习单词/词组数量 可以根据能力调整
-    private static final int SF_MAX = 30;   //4REL 每次练习单词/词组数量 可以根据能力调整
+    //private static final int SF_MAX = 30;   //4REL 每次练习单词/词组数量 可以根据能力调整
+    private int max_cnt;
 
-    public Practice(List<HashMap<String,String>> dic){
+    public Practice(List<HashMap<String,String>> dic,int max_cnt){
         lstPractice = new ArrayList<HashMap<String,String>>();
 
-        int max = (dic.size() > SF_MAX ? SF_MAX : dic.size());
+        int max = (dic.size() > max_cnt ? max_cnt : dic.size());
         Collections.shuffle(dic);
         for (int i = 0; i < max; i++){
             /*
