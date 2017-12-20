@@ -46,7 +46,6 @@ public class constant {
             R.drawable.pinyin,
             R.drawable.hanzi,
             R.drawable.wysw,
-            R.drawable.st,
             R.drawable.rand
     };
 
@@ -55,7 +54,6 @@ public class constant {
             R.drawable.c2e,
             R.drawable.e2c,
             R.drawable.senmk,
-            R.drawable.st,
             R.drawable.rand
     };
 
@@ -64,7 +62,6 @@ public class constant {
             "看汉字写拼音",
             "看拼音写汉字",
             "望义生文",
-            "随堂练习",
             "随机测试"
     };
 
@@ -72,7 +69,6 @@ public class constant {
             "汉译英",
             "英译汉",
             "造句",
-            "随堂练习",
             "随机测试"
     };
 

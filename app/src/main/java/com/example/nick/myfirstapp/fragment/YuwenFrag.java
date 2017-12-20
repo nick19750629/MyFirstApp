@@ -4,8 +4,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
@@ -99,9 +101,9 @@ public class YuwenFrag extends Fragment{
         dic = new ArrayList<HashMap<String,String>>();
         readData();
         if (course.equals(constant.SUB_CHINESE)) {
-            max_cnt = 30;
+            max_cnt = Integer.parseInt(getSettingInfo(rootView,"chinese_amount")) ;
         }else {
-            max_cnt = 50;
+            max_cnt = Integer.parseInt(getSettingInfo(rootView,"english_amount")) ;
         }
         practice = new Practice(dic,max_cnt);
         word = practice.getFirstWord();
@@ -485,4 +487,10 @@ public class YuwenFrag extends Fragment{
             return "";
         }
     }
+    public static String getSettingInfo(View v,String key) {
+        SharedPreferences setting  = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+
+        return setting.getString(key,"30");
+    }
+
 }

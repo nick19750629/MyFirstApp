@@ -7,23 +7,47 @@
     <string name="action_settings">设置</string>
     <string name="author">nech7506</string>
     <string name="email">nick7506@hotmail.com</string>
-    <string name="version">0.8.1</string>
+    <string name="version">0.8.2</string>
     <string name="title_activity_settings">设置</string>
-    <string name="welcome">欢迎使用阿瞳学习Android版（V0.8.1）</string>
+    <string name="welcome">欢迎使用阿瞳学习Android版（V0.8.2）</string>
     <string name="todo">功能保留，敬请期待！</string>
 
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
+    <string name="pref_header_general">通常</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
+    <string name="pref_title_study_way">随堂练习</string>
+    <string name="pref_description_study_way">选项选择时可根据课程需要练习，否则全部
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_display_name">使用者</string>
+    <string name="pref_default_display_name">陈耀辉</string>
+
+    <string name="pref_title_english_amount">英语题量</string>
+    <string name="pref_default_english_amount">50</string>
+
+    <string name="pref_title_chinese_amount">语文题量</string>
+    <string name="pref_default_chinese_amount">30</string>
+
+    <string name="pref_title_grade">请选择年纪</string>
+    <string-array name="pref_list_grades">
+        <item>初一上学期</item>
+        <item>初一下学期</item>
+        <item>初二上学期</item>
+        <item>初二下学期</item>
+        <item>初三上学期</item>
+        <item>初三下学期</item>
+    </string-array>
+    <string-array name="pref_grade_values">
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
     <string-array name="pref_example_list_titles">

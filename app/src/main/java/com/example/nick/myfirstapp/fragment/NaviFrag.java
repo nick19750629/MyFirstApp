@@ -4,8 +4,10 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
@@ -92,6 +94,15 @@ public class NaviFrag extends Fragment {
                 param = position;
                 Log.i(TAG,"Position" + position);
                 retStr = new StringBuffer();
+                //UPD 2017/12/20 功能流程简化
+                if (getSettingSWInfo(rootView,"example_switch")) {
+                    String[] items = getItems(course);
+                    final boolean[] checkedItems = getCheckedItems(items.length);
+                    showDialg(view,items,checkedItems);
+                }else {
+                    initFrag(view);
+                }
+                /*
                 if (position == 3) {
                     String[] items = getItems(course);
                     final boolean[] checkedItems = getCheckedItems(items.length);
@@ -99,8 +110,16 @@ public class NaviFrag extends Fragment {
                 }else {
                     initFrag(view);
                 }
+                */
             }
         });
+
+        /*Toast.makeText(rootView.getContext(),getSettingInfo(rootView,"english_amount"),Toast.LENGTH_LONG).show();
+        if (getSettingSWInfo(rootView,"example_switch")) {
+            Toast.makeText(rootView.getContext(),"true",Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(rootView.getContext(),"false",Toast.LENGTH_LONG).show();
+        }*/
         return rootView;
     }
 
@@ -189,4 +208,18 @@ public class NaviFrag extends Fragment {
         boolean[] checkedItems = new boolean[cnt];
         return checkedItems;
     }
+
+    public static String getSettingInfo(View v) {
+        SharedPreferences setting  = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+        String key = "example_text";
+
+        return setting.getString(key,"empty");
+    }
+
+    public static boolean getSettingSWInfo(View v ,String key) {
+        SharedPreferences setting  = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+
+        return setting.getBoolean(key,false);
+    }
+
 }
