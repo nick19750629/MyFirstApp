@@ -75,11 +75,13 @@ public class YuwenFrag extends Fragment{
         selected = bundle.getString("select");
         Log.i(TAG,"selected=" + selected);
         initView();
-        initValue();
-        createPractice();
-        setTextValue(question,tip,word);
-        //setFloatingActionButton();
-
+        if (initValue()) {
+            createPractice();
+            setTextValue(question,tip,word);
+            //setFloatingActionButton();
+        }else {
+            Toast.makeText(rootView.getContext(),"没有题目",Toast.LENGTH_LONG).show();
+        }
         return rootView;
     }
 
@@ -96,7 +98,7 @@ public class YuwenFrag extends Fragment{
         question = (TextView)rootView.findViewById(R.id.txtWord4c);
     }
 
-    private void initValue() {
+    private boolean initValue() {
         int max_cnt;
         dic = new ArrayList<HashMap<String,String>>();
         readData();
@@ -105,8 +107,12 @@ public class YuwenFrag extends Fragment{
         }else {
             max_cnt = Integer.parseInt(getSettingInfo(rootView,"english_amount")) ;
         }
+        if (dic.size() == 0 || dic == null) {
+            return false;
+        }
         practice = new Practice(dic,max_cnt);
         word = practice.getFirstWord();
+        return true;
     }
 
     private void setFloatingActionButton() {

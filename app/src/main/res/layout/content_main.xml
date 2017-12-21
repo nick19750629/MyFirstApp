@@ -29,6 +29,7 @@
         android:textSize="80px"
         android:text="Hello World!" />
 
+    <!--DEL 2017/12/21 BY nick
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,5 +39,6 @@
         android:layout_marginBottom="96dp"
         android:id="@+id/spinner"
         android:entries="@array/grade"/>
+         -->
 
 </RelativeLayout>

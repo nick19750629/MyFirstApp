@@ -92,7 +92,11 @@ public class NaviFrag extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Toast.makeText(rootView.getContext(),name[position], Toast.LENGTH_LONG).show();
                 param = position;
-                Log.i(TAG,"Position" + position);
+                if (course.equals(constant.SUB_ENGLISH) && (position == 2)) {
+                    Toast.makeText(rootView.getContext(),"skip",Toast.LENGTH_LONG).show();
+                    return;
+                }
+                    Log.i(TAG,"Position" + position);
                 retStr = new StringBuffer();
                 //UPD 2017/12/20 功能流程简化
                 if (getSettingSWInfo(rootView,"example_switch")) {
