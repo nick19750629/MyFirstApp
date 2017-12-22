@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+import android.os.Handler;  
 
 import com.example.nick.constant.constant;
 import com.example.nick.db.DatabaseHelper;
@@ -26,11 +28,13 @@ import com.example.nick.db.progressOperation;
 import com.example.nick.db.subjectOperation;
 import com.example.nick.myfirstapp.MainActivity;
 import com.example.nick.myfirstapp.R;
+import com.example.nick.util.httpUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,6 +46,7 @@ public class ImportFrag extends Fragment {
 
     private static final String TAG = "ImportFrag";
     private View rootView;
+     private MyHandler myhandler = new MyHandler(this);  
 
     @Nullable
     @Override
@@ -69,6 +74,16 @@ public class ImportFrag extends Fragment {
                 //sendMail();sendMail2();
                 sendMail3();
                 Log.i(TAG,"发送邮件完成！");
+            }
+        });
+
+        Button web = (Button) rootView.findViewById(R.id.btnRemoteCall);
+        web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "远程调用开始！");
+                remoteCall();
+                Log.i(TAG, "远程调用完成！");
             }
         });
 
@@ -444,4 +459,45 @@ public class ImportFrag extends Fragment {
         }
     }
 
+    private void remoteCall() {
+        //开启访问数据库线程
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String str = httpUtil.testByPost("u", "p");
+                Bundle bundle = new Bundle();
+                bundle.putString("result",str);
+                Message msg = new Message();
+                msg.setData(bundle);
+                myhandler.sendMessage(msg);
+            }
+        }).start();
+    }
+    
+    //弱引用，防止内存泄露  
+    private static class MyHandler extends Handler {
+        private final WeakReference<ImportFrag> mFrag;
+  
+        public MyHandler(ImportFrag frag) {
+            mFrag = new WeakReference<ImportFrag>(frag);
+        }  
+  
+        @Override  
+        public void handleMessage(Message msg) {  
+            System.out.println(msg);  
+            if (mFrag.get() == null) {
+                return;  
+            }
+            mFrag.get().updateUIThread(msg);
+        }  
+    }      
+    
+    //配合子线程更新UI线程  
+    private void updateUIThread(Message msg){
+        Bundle bundle = new Bundle();  
+        bundle = msg.getData();  
+        String result = bundle.getString("result");  
+        Toast.makeText(rootView.getContext(), result, Toast.LENGTH_SHORT).show();
+    }  
+    
 }
