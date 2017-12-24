@@ -51,8 +51,8 @@ public class constant {
 
     //定义图标数组
     public static final int[] EImageRes = {
-            R.drawable.c2e,
             R.drawable.e2c,
+            R.drawable.c2e,
             R.drawable.senmk,
             R.drawable.rand
     };
@@ -66,8 +66,8 @@ public class constant {
     };
 
     public static final String[] eopt_name = {
-            "汉译英",
             "英译汉",
+            "汉译英",
             "造句",
             "随机测试"
     };

@@ -25,6 +25,7 @@ import com.example.nick.db.DatabaseHelper;
 import com.example.nick.db.dicOperation;
 import com.example.nick.domain.Practice;
 import com.example.nick.myfirstapp.fragment.HabitFrag;
+import com.example.nick.myfirstapp.fragment.HistoryFrag;
 import com.example.nick.myfirstapp.fragment.ImportFrag;
 import com.example.nick.myfirstapp.fragment.ImprovementFrag;
 import com.example.nick.myfirstapp.fragment.MainFrag;
@@ -58,8 +59,8 @@ public class MainActivity extends AppCompatActivity
 
         txt = (TextView) findViewById(R.id.txtWord);
         tip = (TextView) findViewById(R.id.txtTip);
-        txt.setText("Welcome!");
-        tip.setText("");
+        txt.setText(MainActivity.this.getString(R.string.app_name));
+        tip.setText(MainActivity.this.getString(R.string.welcome));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         //TODO invisible
@@ -131,8 +132,9 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(MainActivity.this,"暂时保留。",Toast.LENGTH_LONG).show();
         } else */
         if (id == R.id.nav_manage) {
-            fragment = new WelcomeFrag();
-            //Toast.makeText(MainActivity.this,"暂时保留。",Toast.LENGTH_LONG).show();
+            fragment = new TodoFrag();
+        } else if (id == R.id.nav_history) {
+            fragment = new HistoryFrag();
         } else if (id == R.id.nav_habit) {
             fragment = new HabitFrag();
         } else if (id == R.id.nav_recite) {
@@ -155,9 +157,9 @@ public class MainActivity extends AppCompatActivity
             fragment = new ImprovementFrag();
             //Toast.makeText(MainActivity.this,"暂时保留。",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_share) {
-            //fragment = new TestFragment();
+            fragment = new TodoFrag();
+        } else if (id == R.id.nav_process) {
             fragment = new TestFrag();
-            //Toast.makeText(MainActivity.this,"暂时保留。",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_send) {
             //sendMail();
             fragment = new TodoFrag();
